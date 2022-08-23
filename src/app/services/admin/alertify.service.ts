@@ -10,16 +10,23 @@ export class AlertifyService {
 
   constructor() { }
 
-  Message(message:string,messageType:MessageType,position:Position,dismissOthers:Boolean = false,wait:Number = 3){
-    alertify.set('notifier','position', position);
-    const messageObject = alertify[messageType](message,wait);
-    if(dismissOthers)
+  Message(message:string,alertfiyOptions:Partial<AlertifyOptions>){
+    alertify.set('notifier','position', alertfiyOptions.position);
+    const messageObject = alertify[alertfiyOptions.messageType](message,alertfiyOptions.wait);
+    if(alertfiyOptions.dismissOthers)
       messageObject.dismissOthers();
   }
 
   DissmisAll(){
     alertify.dismissAll();
   }
+}
+
+export class AlertifyOptions{
+  dismissOthers:Boolean = false
+  wait:Number = 3
+  position:Position
+  messageType:MessageType
 }
 
 export enum MessageType{
