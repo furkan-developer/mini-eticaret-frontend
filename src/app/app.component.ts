@@ -9,9 +9,5 @@ import { CustomToastrMessageType, CustomToastrPosition, CustomToastrService } fr
 })
 export class AppComponent {
   title = 'FrontEnd';
-
-  constructor(private customToastr:CustomToastrService) {
-    customToastr.Message("furkan",{messageType:CustomToastrMessageType.Error,position:CustomToastrPosition.BottomLeft})
-  }
 }
 
